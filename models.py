@@ -15,3 +15,10 @@ class Transaction(models.Model):
 	transaction_type = models.CharField(max_length=20, choices=Type_of_transactions, default=DEPOSIT,)
 	cost = models.IntegerField()
 	phone_number = models.CharField(max_length=20)
+
+class CustomerDetails(models.Model):
+	customer_id = models.IntegerField()
+	mpesa_code = models.CharField(max_length=20)
+	date_of_transaction = models.DateTimeField()
+	amount = models.IntegerField()
+	signature =models.CharField(max_length=50)
