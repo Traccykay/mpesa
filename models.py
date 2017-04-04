@@ -10,15 +10,18 @@ class Transaction(models.Model):
  		)
 
 
-	amount = models.IntegerField()
+	amount = models.PositiveSmallIntegerField()
 	date_of_transaction = models.DateTimeField()
 	transaction_type = models.CharField(max_length=20, choices=Type_of_transactions, default=DEPOSIT,)
 	cost = models.IntegerField()
 	phone_number = models.CharField(max_length=20)
 
+
 class CustomerDetails(models.Model):
-	customer_id = models.IntegerField()
+	national_id = models.IntegerField()
 	mpesa_code = models.CharField(max_length=20)
 	date_of_transaction = models.DateTimeField()
 	amount = models.IntegerField()
 	signature =models.CharField(max_length=50)
+	# customer = models.ForeignKey(Transaction, on_delete=models.CASCADE, default=3,)
+	customer = models.OneToOneField(Transaction, on_delete=models.CASCADE, default=3,)
